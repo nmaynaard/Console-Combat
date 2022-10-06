@@ -1,0 +1,15 @@
+/Users/nathanmaynard/Desktop/Console-Combat/bin/Debug/net6.0/Console-Combat
+/Users/nathanmaynard/Desktop/Console-Combat/bin/Debug/net6.0/Console-Combat.deps.json
+/Users/nathanmaynard/Desktop/Console-Combat/bin/Debug/net6.0/Console-Combat.runtimeconfig.json
+/Users/nathanmaynard/Desktop/Console-Combat/bin/Debug/net6.0/Console-Combat.dll
+/Users/nathanmaynard/Desktop/Console-Combat/bin/Debug/net6.0/Console-Combat.pdb
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.csproj.AssemblyReference.cache
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.AssemblyInfoInputs.cache
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.AssemblyInfo.cs
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.csproj.CoreCompileInputs.cache
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.dll
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/refint/Console-Combat.dll
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.pdb
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/Console-Combat.genruntimeconfig.cache
+/Users/nathanmaynard/Desktop/Console-Combat/obj/Debug/net6.0/ref/Console-Combat.dll
