@@ -19,7 +19,9 @@ namespace consoleCombat
 
         private void DisplayOptions()
         {
+            ForegroundColor = ConsoleColor.Green;
             WriteLine(Prompt);
+            ForegroundColor = ConsoleColor.White;
             for (int i = 0; i < Options.Length; i++)
             {
                 string currentOption = Options[i];
@@ -36,7 +38,6 @@ namespace consoleCombat
 
                 WriteLine(prefix + currentOption);
             }
-            ResetColor();
         }
 
         public int Run()

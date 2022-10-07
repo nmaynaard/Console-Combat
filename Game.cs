@@ -13,21 +13,22 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
 
         private void RunMainMenu()
         {
-            string prompt = @"           ░█████╗░░█████╗░███╗░░██╗░██████╗░█████╗░██╗░░░░░███████╗  
-           ██╔══██╗██╔══██╗████╗░██║██╔════╝██╔══██╗██║░░░░░██╔════╝  
-           ██║░░╚═╝██║░░██║██╔██╗██║╚█████╗░██║░░██║██║░░░░░█████╗░░  
-           ██║░░██╗██║░░██║██║╚████║░╚═══██╗██║░░██║██║░░░░░██╔══╝░░  
-           ╚█████╔╝╚█████╔╝██║░╚███║██████╔╝╚█████╔╝███████╗███████╗  
-           ░╚════╝░░╚════╝░╚═╝░░╚══╝╚═════╝░░╚════╝░╚══════╝╚══════╝  
+            string prompt = @"     
 
-              ░█████╗░░█████╗░███╗░░░███╗██████╗░░█████╗░████████╗
-              ██╔══██╗██╔══██╗████╗░████║██╔══██╗██╔══██╗╚══██╔══╝
-              ██║░░╚═╝██║░░██║██╔████╔██║██████╦╝███████║░░░██║░░░
-              ██║░░██╗██║░░██║██║╚██╔╝██║██╔══██╗██╔══██║░░░██║░░░
-              ╚█████╔╝╚█████╔╝██║░╚═╝░██║██████╦╝██║░░██║░░░██║░░░
-              ░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░
+            █████╗  █████╗ ███╗  ██╗ ██████  █████╗ ██╗     ███████╗  
+           ██╔══██╗██╔══██╗████╗ ██║██╔════╝██╔══██╗██║     ██╔════╝  
+           ██║  ╚═╝██║  ██║██╔██╗██║╚█████╗ ██║  ██║██║     █████╗  
+           ██║  ██╗██║  ██║██║╚████║ ╚═══██╗██║  ██║██║     ██╔══╝  
+           ╚█████╔╝╚█████╔╝██║ ╚███║██████╔╝╚█████╔╝███████╗███████╗  
+            ╚════╝  ╚════╝ ╚═╝  ╚══╝╚═════╝  ╚════╝ ╚══════╝╚══════╝  
+
+               █████╗  █████╗ ███╗   ███╗██████╗  █████╗ ████████╗
+              ██╔══██╗██╔══██╗████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝
+              ██║  ╚═╝██║  ██║██╔████╔██║██████╦╝███████║   ██║
+              ██║  ██╗██║  ██║██║╚██╔╝██║██╔══██╗██╔══██║   ██║
+              ╚█████╔╝╚█████╔╝██║ ╚═╝ ██║██████╦╝██║  ██║   ██║
+               ╚════╝  ╚════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝
               
-
               
               ";
             string[] options = {
@@ -79,10 +80,35 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
         }
         private void RunFirstChoice()
         {
-            Clear();
-            WriteLine("Placeholder the game");
+            string prompt = "CHARACTER CREATION";
+            string[] options = { "   New Character", "   Load Character", "   Back" };
+            Menu createCharacterMenu = new Menu(prompt, options);
+            int selectedIndex = createCharacterMenu.Run();
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    NewCharacter();
+                    break;
+                case 1:
+                    LoadCharacter();
+                    break;
+                case 2:
+                    RunMainMenu();
+                    break;
+            }
+        }
+        private void LoadCharacter()
+        {
+            WriteLine("Loading Character...");
             ReadKey(true);
-            ExitGame();
+            RunMainMenu();
+        }
+        private void NewCharacter()
+        {
+            WriteLine("Creating Character...");
+            ReadKey(true);
+            RunMainMenu();
         }
     }
 }
