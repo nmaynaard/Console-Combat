@@ -7,11 +7,8 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            WriteLine("Hello World!");
-            WriteLine("Hello World!");
-            WriteLine("Hello World!");
-            WriteLine("Hello World!");
-            WriteLine("Hello World!");
+            Game game = new Game();
+            game.Start();
         }
     }
 }
