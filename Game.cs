@@ -5,6 +5,7 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
 {
     class Game
     {
+        Accounts account = new Accounts();
         public void Start()
         {
             Title = "Console Combat";
@@ -32,19 +33,21 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
               
               ";
             string[] options = {
-            "                                   𝐏𝐋𝐀𝐘",
-            "                                   𝐀𝐁𝐎𝐔𝐓",
-            "                                   𝐇𝐄𝐋𝐏",
-            "                                   𝐄𝐗𝐈𝐓" };
+            "                                   Register",
+            "                                   Login",
+            "                                   Help",
+            "                                   Exit" };
             Menu mainMenu = new Menu(prompt, options);
             int selectedIndex = mainMenu.Run();
             switch (selectedIndex)
             {
                 case 0:
-                    RunFirstChoice();
+                    account.Register();
+                    ReadKey(true);
+                    RunMainMenu();
                     break;
                 case 1:
-                    DisplayAbout();
+                    RunFirstChoice();
                     break;
                 case 2:
                     DisplayHelp();
@@ -61,7 +64,7 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
             ReadKey(true);
             Environment.Exit(0);
         }
-        private void DisplayAbout()
+        private void DisplayHelp()
         {
             Clear();
             WriteLine("Game version: 1.0");
@@ -70,16 +73,10 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
             ReadKey(true);
             RunMainMenu();
         }
-        private void DisplayHelp()
-        {
-            Clear();
-            WriteLine("Placeholder for tips on the game");
-            ReadKey(true);
-            RunMainMenu();
-            // Add Tips on the game once created.
-        }
         private void RunFirstChoice()
         {
+
+            account.Login();
             string prompt = "CHARACTER CREATION";
             string[] options = { "   New Character", "   Load Character", "   Back" };
             Menu createCharacterMenu = new Menu(prompt, options);
