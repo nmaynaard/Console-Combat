@@ -7,6 +7,8 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
+            Title = "Console Combat";
+            CursorVisible = false;
             Game game = new Game();
             game.Start();
         }
