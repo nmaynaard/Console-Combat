@@ -13,6 +13,7 @@ namespace consoleCombat
             CursorVisible = false;
             Game game = new Game();
             game.Test();
+            game.Start();
         }
     }
 }
