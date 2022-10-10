@@ -1,10 +1,17 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using static System.Console;
 
-namespace consoleCombat
+namespace consoleCombat.Scenes
 {
-    class Accounts
+    class AccountScene : Scene
     {
+        public AccountScene(Game game) : base(game)
+        {
+        }
+
         private string username;
         private string password;
         private string username1;
@@ -64,6 +71,5 @@ namespace consoleCombat
             }
 
         }
-
     }
 }

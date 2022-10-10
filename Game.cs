@@ -1,111 +1,49 @@
 using System;
 using static System.Console;
+using consoleCombat.Scenes;
+using consoleCombat.Characters;
+using consoleCombat.Items;
 
 namespace consoleCombat // Note: actual namespace depends on the project name.
 {
     class Game
     {
-        Accounts account = new Accounts();
+
+        public TitleScene titleScene;
+        public AccountScene accountScene;
+        public CharacterCreationScene characterCreationScene;
+        public Player player;
+        public Bulbasaur bulbasaur;
+        public Charmander charmander;
+        public Squirtle squirtle;
+        private Item pokeball;
+
+        public Game()
+        {
+            titleScene = new TitleScene(this);
+            accountScene = new AccountScene(this);
+            characterCreationScene = new CharacterCreationScene(this);
+            player = new Player("Nathan", 20, ConsoleColor.Magenta);
+            bulbasaur = new Bulbasaur("Bulbasaur", 10, ConsoleColor.DarkYellow);
+            charmander = new Charmander("Charmander", 10, ConsoleColor.Red);
+            squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
+            pokeball = new Item("Pokeball", 10);
+        }
         public void Start()
         {
-            Title = "Console Combat";
-            RunMainMenu();
+            titleScene.Run();
         }
 
-        private void RunMainMenu()
-        {
-            string prompt = @"     
-
-            █████╗  █████╗ ███╗  ██╗ ██████  █████╗ ██╗     ███████╗  
-           ██╔══██╗██╔══██╗████╗ ██║██╔════╝██╔══██╗██║     ██╔════╝  
-           ██║  ╚═╝██║  ██║██╔██╗██║╚█████╗ ██║  ██║██║     █████╗  
-           ██║  ██╗██║  ██║██║╚████║ ╚═══██╗██║  ██║██║     ██╔══╝  
-           ╚█████╔╝╚█████╔╝██║ ╚███║██████╔╝╚█████╔╝███████╗███████╗  
-            ╚════╝  ╚════╝ ╚═╝  ╚══╝╚═════╝  ╚════╝ ╚══════╝╚══════╝  
-
-               █████╗  █████╗ ███╗   ███╗██████╗  █████╗ ████████╗
-              ██╔══██╗██╔══██╗████╗ ████║██╔══██╗██╔══██╗╚══██╔══╝
-              ██║  ╚═╝██║  ██║██╔████╔██║██████╦╝███████║   ██║
-              ██║  ██╗██║  ██║██║╚██╔╝██║██╔══██╗██╔══██║   ██║
-              ╚█████╔╝╚█████╔╝██║ ╚═╝ ██║██████╦╝██║  ██║   ██║
-               ╚════╝  ╚════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝   ╚═╝
-              
-              
-              ";
-            string[] options = {
-            "                                   Register",
-            "                                   Login",
-            "                                   Help",
-            "                                   Exit" };
-            Menu mainMenu = new Menu(prompt, options);
-            int selectedIndex = mainMenu.Run();
-            switch (selectedIndex)
-            {
-                case 0:
-                    account.Register();
-                    ReadKey(true);
-                    RunMainMenu();
-                    break;
-                case 1:
-                    RunFirstChoice();
-                    break;
-                case 2:
-                    DisplayHelp();
-                    break;
-                case 3:
-                    ExitGame();
-                    break;
-            }
-        }
-
-        private void ExitGame()
-        {
-            WriteLine("\nPress any key to exit...");
-            ReadKey(true);
-            Environment.Exit(0);
-        }
-        private void DisplayHelp()
+        public void Test()
         {
             Clear();
-            WriteLine("Game version: 1.0");
-            WriteLine("A C# Console Game based on Combatting Opponents");
-            WriteLine("https://github.com/nmaynaard/Console-Combat");
+            player.PickUpItem(pokeball);
+            player.DisplayInfo();
+            bulbasaur.DisplayInfo();
+            charmander.DisplayInfo();
+            squirtle.DisplayInfo();
             ReadKey(true);
-            RunMainMenu();
-        }
-        private void RunFirstChoice()
-        {
-
-            account.Login();
-            string prompt = "CHARACTER CREATION";
-            string[] options = { "   New Character", "   Load Character", "   Back" };
-            Menu createCharacterMenu = new Menu(prompt, options);
-            int selectedIndex = createCharacterMenu.Run();
-
-            switch (selectedIndex)
-            {
-                case 0:
-                    NewCharacter();
-                    break;
-                case 1:
-                    LoadCharacter();
-                    break;
-                case 2:
-                    RunMainMenu();
-                    break;
-            }
-        }
-        private void LoadCharacter()
-        {
-            WriteLine("Loading Character...");
-            ReadKey(true);
-            RunMainMenu();
-        }
-        private void NewCharacter()
-        {
-            WriteLine("Creating Character...");
-            ReadKey(true);
-            RunMainMenu();
         }
     }
+
 }

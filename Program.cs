@@ -1,7 +1,9 @@
 ﻿using System;
 using static System.Console;
+using consoleCombat.Scenes;
+using consoleCombat.Characters;
 
-namespace consoleCombat // Note: actual namespace depends on the project name.
+namespace consoleCombat
 {
     internal class Program
     {
@@ -10,7 +12,7 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
             Title = "Console Combat";
             CursorVisible = false;
             Game game = new Game();
-            game.Start();
+            game.Test();
         }
     }
 }

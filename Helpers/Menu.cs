@@ -1,7 +1,9 @@
 using System;
 using static System.Console;
+using consoleCombat.Scenes;
+using consoleCombat.Characters;
 
-namespace consoleCombat
+namespace consoleCombat.Helpers
 {
     class Menu
     {
