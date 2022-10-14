@@ -42,10 +42,10 @@ namespace consoleCombat.Scenes
             switch (selectedIndex)
             {
                 case 0:
-                    ReadKey(true);
+                    MyGame.accountScene.Register();
                     break;
                 case 1:
-                    RunFirstChoice();
+                    MyGame.accountScene.Login();
                     break;
                 case 2:
                     DisplayHelp();
@@ -69,10 +69,7 @@ namespace consoleCombat.Scenes
             WriteLine("A C# Console Game based on Combatting Opponents");
             WriteLine("https://github.com/nmaynaard/Console-Combat");
             ReadKey(true);
-        }
-        private void RunFirstChoice()
-        {
-
+            MyGame.titleScene.Run();
         }
     }
 }

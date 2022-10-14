@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Console;
+
 
 
 namespace consoleCombat.Characters
@@ -12,6 +14,13 @@ namespace consoleCombat.Characters
              : base(characterName, health, color)
         {
 
+        }
+
+        public override void Attack(Character otherCharacter)
+        {
+            ForegroundColor = _color;
+            WriteLine($"{_characterName} attacks {otherCharacter._characterName}");
+            ResetColor();
         }
     }
 

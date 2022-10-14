@@ -1,47 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using static System.Console;
-using consoleCombat.Scenes;
-using consoleCombat.Characters;
-using consoleCombat.Items;
 
-namespace consoleCombat // Note: actual namespace depends on the project name.
+namespace consoleCombat
 {
-    class Game
+    public class combat
     {
-
-        public TitleScene titleScene;
-        public AccountScene accountScene;
-        public CharacterCreationScene characterCreationScene;
-        public Player player;
-        public Bulbasaur bulbasaur;
-        public Charmander charmander;
-        public Squirtle squirtle;
-        private Item pokeball;
-        private List<Character> enemies;
-        private Character CurrentEnemy;
-        public Game()
-        {
-            titleScene = new TitleScene(this);
-            accountScene = new AccountScene(this);
-            characterCreationScene = new CharacterCreationScene(this);
-            bulbasaur = new Bulbasaur("Bulbasaur", 10, ConsoleColor.DarkYellow);
-            charmander = new Charmander("Charmander", 10, ConsoleColor.Red);
-            squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
-            pokeball = new Item("Pokeball", 10);
-            enemies = new List<Character>() { bulbasaur, charmander, squirtle };
-        }
-        public void Start()
-        {
-            titleScene.Run();
-        }
-
-
-
-
-
-
-
-
         public void Test()
         {
             Write("Username:");
@@ -87,5 +53,6 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
                 ReadKey(true);
             }
         }
+
     }
 }

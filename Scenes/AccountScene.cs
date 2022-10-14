@@ -16,18 +16,20 @@ namespace consoleCombat.Scenes
         private string password;
         private string username1;
         private string password1;
+        private string path;
         StreamWriter writer;
         StreamReader reader;
 
         public void Register()
         {
+            path = "/Users/nathanmaynard/Desktop/Console-Combat/Accounts";
             Clear();
             Write("Username:");
             username = ReadLine();
             Write("Password:");
             password = ReadLine();
 
-            using (StreamWriter writer = new StreamWriter(File.Create("Login.txt")))
+            using (writer = new StreamWriter(File.Create(username + ".txt")))
             {
                 writer.WriteLine(username);
                 writer.WriteLine(password);
@@ -36,7 +38,7 @@ namespace consoleCombat.Scenes
             ForegroundColor = ConsoleColor.Green;
             WriteLine("Account Created");
             ResetColor();
-
+            ReadKey(true);
         }
 
         public void Login()
@@ -47,7 +49,7 @@ namespace consoleCombat.Scenes
             Write("Password:");
             password = ReadLine();
 
-            using (StreamReader reader = new StreamReader(File.Open("Login.txt", FileMode.Open)))
+            using (StreamReader reader = new StreamReader(File.Open(username + ".txt", FileMode.Open)))
             {
                 username1 = reader.ReadLine();
                 password1 = reader.ReadLine();
@@ -57,16 +59,16 @@ namespace consoleCombat.Scenes
                 {
                     ForegroundColor = ConsoleColor.Green;
                     WriteLine("Login Successful");
-                    Console.ReadKey(true);
+                    ReadKey(true);
                     ResetColor();
                 }
                 else
                 {
                     ForegroundColor = ConsoleColor.Red;
                     WriteLine("Login Failed");
-                    Console.ReadKey(true);
+                    ReadKey(true);
                     ResetColor();
-                    Login();
+                    MyGame.titleScene.Run();
                 }
             }
 

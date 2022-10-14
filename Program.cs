@@ -12,7 +12,11 @@ namespace consoleCombat
             Title = "Console Combat";
             CursorVisible = false;
             Game game = new Game();
-            game.Test();
+
+            // Disable While Running
+            //game.Test();
+
+            // Disable While Testing
             game.Start();
         }
     }
