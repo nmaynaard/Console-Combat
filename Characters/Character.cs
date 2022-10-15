@@ -47,6 +47,23 @@ namespace consoleCombat.Characters
 
         }
 
+        public void Heal()
+        {
+            randGenerator = new Random();
+            ForegroundColor = _color;
+            Write($"{_characterName} Heals and ");
+            int randPercent = randGenerator.Next(1, 101);
+            if (randPercent <= 40)
+            {
+                WriteLine("is successful...");
+                _health = _maxHealth;
+            }
+            else
+            {
+                WriteLine("is unsuccessful...");
+            }
+
+        }
         public void TakeDamage(int totalDamage)
         {
             _health -= totalDamage;

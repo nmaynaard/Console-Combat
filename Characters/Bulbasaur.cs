@@ -22,7 +22,7 @@ namespace consoleCombat.Characters
             ForegroundColor = _color;
             Write($"{_characterName} attacks {otherCharacter._characterName} and");
             int randPercent = randGenerator.Next(1, 101);
-            if (randPercent <= 50)
+            if (randPercent <= 90)
             {
                 WriteLine(" hits for 4 damage");
                 otherCharacter.TakeDamage(4);

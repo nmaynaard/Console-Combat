@@ -49,13 +49,10 @@ namespace consoleCombat.Scenes
                 ForegroundColor = MyGame.player._color;
                 WriteLine("Hit Any Key To Select Ability");
                 MyGame.player.Attack(MyGame.CurrentEnemy);
-                WriteLine();
                 if (MyGame.player._isDead || MyGame.CurrentEnemy._isDead)
                 {
                     break;
                 }
-                Clear();
-                WriteLine();
                 MyGame.CurrentEnemy.Attack(MyGame.player);
                 WriteLine();
             }

@@ -51,11 +51,12 @@ namespace consoleCombat.Characters
             {
                 WriteLine(" hits for 4 damage");
                 otherCharacter.TakeDamage(4);
-                HealthBar();
+                ReadKey(true);
             }
             else
             {
                 WriteLine(" misses...");
+                ReadKey(true);
             }
         }
 
@@ -64,7 +65,7 @@ namespace consoleCombat.Characters
             ForegroundColor = _color;
             ReadKey(true);
             string prompt = "Abilities:";
-            string[] options = { "Punch", "Kick" };
+            string[] options = { "Punch", "Kick", "Heal" };
             Menu createAbilityMenu = new Menu(prompt, options);
             int selectedIndex = createAbilityMenu.Run();
             otherCharacter.HealthBar();
@@ -79,9 +80,11 @@ namespace consoleCombat.Characters
                     Clear();
                     Kick(otherCharacter);
                     break;
+                case 2:
+                    Clear();
+                    Heal();
+                    break;
             }
-            //Punch(otherCharacter);
-            //Kick(otherCharacter);
             ResetColor();
         }
     }

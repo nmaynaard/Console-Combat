@@ -4,7 +4,7 @@ using consoleCombat.Scenes;
 using consoleCombat.Characters;
 using consoleCombat.Items;
 
-namespace consoleCombat // Note: actual namespace depends on the project name.
+namespace consoleCombat
 {
     class Game
     {
@@ -27,7 +27,7 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
             Squirtle squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
             Item pokeball = new Item("Pokeball", 10);
             enemies = new List<Character>() { bulbasaur, charmander, squirtle };
-            player = new Player(accountScene.username, 40, ConsoleColor.Magenta);
+            player = new Player(accountScene.username, 10, ConsoleColor.Magenta);
         }
         public void Start()
         {
