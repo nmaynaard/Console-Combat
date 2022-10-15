@@ -8,7 +8,7 @@ namespace consoleCombat.Scenes
     class Scene
     {
 
-        protected Game MyGame;
+        public Game MyGame;
         public Scene(Game game)
         {
             MyGame = game;

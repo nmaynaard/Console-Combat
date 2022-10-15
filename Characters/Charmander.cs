@@ -17,8 +17,19 @@ namespace consoleCombat.Characters
 
         public override void Attack(Character otherCharacter)
         {
+            randGenerator = new Random();
             ForegroundColor = _color;
-            WriteLine($"{_characterName} attacks {otherCharacter._characterName}");
+            Write($"{_characterName} attacks {otherCharacter._characterName} and");
+            int randPercent = randGenerator.Next(1, 101);
+            if (randPercent <= 50)
+            {
+                WriteLine(" hits for 4 damage");
+                otherCharacter.TakeDamage(4);
+            }
+            else
+            {
+                WriteLine(" misses...");
+            }
             ResetColor();
         }
     }

@@ -9,7 +9,7 @@ namespace consoleCombat.Characters
 {
     public class Character
     {
-        public string _characterName { get; protected set; }
+        public string _characterName { get; set; }
         public int _health { get; protected set; }
         public int _maxHealth { get; protected set; }
         public ConsoleColor _color { get; protected set; }

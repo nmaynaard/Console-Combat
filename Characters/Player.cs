@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static System.Console;
+using consoleCombat.Helpers;
+using consoleCombat.Scenes;
 
 
 namespace consoleCombat.Characters
 {
     public class Player : Character
     {
-
+        public string username;
         private int balance;
         private int experience;
         private int experienceToNextLevel;
@@ -48,7 +50,8 @@ namespace consoleCombat.Characters
             if (randPercent <= 90)
             {
                 WriteLine(" hits for 4 damage");
-                otherCharacter.TakeDamage(10);
+                otherCharacter.TakeDamage(4);
+                HealthBar();
             }
             else
             {
@@ -59,27 +62,26 @@ namespace consoleCombat.Characters
         public override void Attack(Character otherCharacter)
         {
             ForegroundColor = _color;
-            WriteLine($@"You're fighting with {otherCharacter._characterName} and can:
-            1) Punch
-            2) Kick
-            ");
-            ConsoleKeyInfo keyInfo = ReadKey(true);
-            if (keyInfo.Key == ConsoleKey.D1)
-            {
-                Punch(otherCharacter);
+            ReadKey(true);
+            string prompt = "Abilities:";
+            string[] options = { "Punch", "Kick" };
+            Menu createAbilityMenu = new Menu(prompt, options);
+            int selectedIndex = createAbilityMenu.Run();
+            otherCharacter.HealthBar();
 
-            }
-            else if (keyInfo.Key == ConsoleKey.D2)
+            switch (selectedIndex)
             {
-                Kick(otherCharacter);
+                case 0:
+                    Clear();
+                    Punch(otherCharacter);
+                    break;
+                case 1:
+                    Clear();
+                    Kick(otherCharacter);
+                    break;
             }
-            else
-            {
-                Clear();
-                WriteLine("Incorrect Syntax");
-                WriteLine($@"Example: Press 1/2");
-                Attack(otherCharacter);
-            }
+            //Punch(otherCharacter);
+            //Kick(otherCharacter);
             ResetColor();
         }
     }

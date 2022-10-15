@@ -11,81 +11,32 @@ namespace consoleCombat // Note: actual namespace depends on the project name.
 
         public TitleScene titleScene;
         public AccountScene accountScene;
-        public CharacterCreationScene characterCreationScene;
+        public MainGameScene mainGameScene;
+        public FightScene fightScene;
         public Player player;
-        public Bulbasaur bulbasaur;
-        public Charmander charmander;
-        public Squirtle squirtle;
-        private Item pokeball;
-        private List<Character> enemies;
-        private Character CurrentEnemy;
+        public List<Character> enemies;
+        public Character CurrentEnemy;
         public Game()
         {
             titleScene = new TitleScene(this);
             accountScene = new AccountScene(this);
-            characterCreationScene = new CharacterCreationScene(this);
-            bulbasaur = new Bulbasaur("Bulbasaur", 10, ConsoleColor.DarkYellow);
-            charmander = new Charmander("Charmander", 10, ConsoleColor.Red);
-            squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
-            pokeball = new Item("Pokeball", 10);
+            mainGameScene = new MainGameScene(this);
+            fightScene = new FightScene(this);
+            Bulbasaur bulbasaur = new Bulbasaur("Bulbasaur", 10, ConsoleColor.DarkYellow);
+            Charmander charmander = new Charmander("Charmander", 10, ConsoleColor.Red);
+            Squirtle squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
+            Item pokeball = new Item("Pokeball", 10);
             enemies = new List<Character>() { bulbasaur, charmander, squirtle };
+            player = new Player(accountScene.username, 40, ConsoleColor.Magenta);
         }
         public void Start()
         {
             titleScene.Run();
         }
 
-
-
-
-
-
-
-
         public void Test()
         {
-            Write("Username:");
-            string name = ReadLine();
-            player = new Player(name, 40, ConsoleColor.Magenta);
-            for (int i = 0; i < enemies.Count; i += 1)
-            {
-                CurrentEnemy = enemies[i];
-                CurrentEnemy.DisplayInfo();
-                ReadKey(true);
-                Battle();
-                if (player._isDead)
-                {
-                    WriteLine("You Died");
-                    ReadKey(true);
-                    break;
-                }
-                else
-                {
-                    WriteLine("You Survived");
-                    ReadKey(true);
-                }
-            }
-
-        }
-        public void Battle()
-        {
-            Clear();
-            while (player._isAlive && CurrentEnemy._isAlive)
-            {
-                player.HealthBar();
-                CurrentEnemy.HealthBar();
-                WriteLine();
-                player.Attack(CurrentEnemy);
-                WriteLine();
-                ReadKey(true);
-                if (player._isDead || CurrentEnemy._isDead) break;
-                Clear();
-                player.HealthBar();
-                CurrentEnemy.HealthBar();
-                WriteLine();
-                CurrentEnemy.Attack(player);
-                ReadKey(true);
-            }
+            fightScene.Run();
         }
     }
 }

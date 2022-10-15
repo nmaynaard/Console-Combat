@@ -12,7 +12,7 @@ namespace consoleCombat.Scenes
         {
         }
 
-        private string username;
+        public string username { get; private set; }
         private string password;
         private string username1;
         private string password1;
@@ -22,7 +22,6 @@ namespace consoleCombat.Scenes
 
         public void Register()
         {
-            path = "/Users/nathanmaynard/Desktop/Console-Combat/Accounts";
             Clear();
             Write("Username:");
             username = ReadLine();
@@ -39,6 +38,7 @@ namespace consoleCombat.Scenes
             WriteLine("Account Created");
             ResetColor();
             ReadKey(true);
+            MyGame.mainGameScene.Run();
         }
 
         public void Login()
@@ -61,6 +61,7 @@ namespace consoleCombat.Scenes
                     WriteLine("Login Successful");
                     ReadKey(true);
                     ResetColor();
+                    MyGame.mainGameScene.Run();
                 }
                 else
                 {
