@@ -25,7 +25,7 @@ namespace consoleCombat.Characters
             if (randPercent <= 90)
             {
                 WriteLine(" hits for 4 damage");
-                otherCharacter.TakeDamage(4);
+                otherCharacter.TakeDamage(2);
             }
             else
             {

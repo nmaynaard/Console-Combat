@@ -17,24 +17,29 @@ namespace consoleCombat.Scenes
 
         public override void Run()
         {
-            for (int i = 0; i < MyGame.enemies.Count; i += 1)
+            int i;
+            Random rand = new Random();
+            i = rand.Next(0, MyGame.enemies.Count);
+            MyGame.player._characterName = MyGame.accountScene.username;
+            MyGame.CurrentEnemy = MyGame.enemies[i];
+            Battle();
+            if (MyGame.player._isDead)
             {
-                MyGame.player._characterName = MyGame.accountScene.username;
-                MyGame.CurrentEnemy = MyGame.enemies[i];
-                Battle();
-                if (MyGame.player._isDead)
-                {
-                    WriteLine("You Died");
-                    ReadKey(true);
-                    break;
-                }
-                else
-                {
-                    WriteLine("You Survived");
-                    ReadKey(true);
-                }
+                MyGame.CurrentEnemy.ResetHealth();
+                WriteLine($"{MyGame.player._characterName} died");
+                ReadKey(true);
             }
-            MyGame.titleScene.Run();
+            else
+            {
+                MyGame.CurrentEnemy.ResetHealth();
+                ForegroundColor = MyGame.CurrentEnemy._color;
+                WriteLine($"{MyGame.CurrentEnemy._characterName} died");
+                ResetColor();
+                MyGame.player.ExperienceGain();
+                ReadKey(true);
+            }
+
+            MyGame.mainGameScene.Run();
         }
 
         public void Battle()
@@ -51,7 +56,7 @@ namespace consoleCombat.Scenes
                 MyGame.player.Attack(MyGame.CurrentEnemy);
                 if (MyGame.player._isDead || MyGame.CurrentEnemy._isDead)
                 {
-                    break;
+                    return;
                 }
                 MyGame.CurrentEnemy.Attack(MyGame.player);
                 WriteLine();

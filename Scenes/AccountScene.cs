@@ -25,8 +25,20 @@ namespace consoleCombat.Scenes
             Clear();
             Write("Username:");
             username = ReadLine();
+            if (username.Length <= 1)
+            {
+                WriteLine("Username must be at least 2 characters!");
+                ReadKey(true);
+                Register();
+            }
             Write("Password:");
             password = ReadLine();
+            if (password.Length <= 5)
+            {
+                WriteLine("Password must be at least 6 characters!");
+                ReadKey(true);
+                Register();
+            }
 
             using (writer = new StreamWriter(File.Create(username + ".txt")))
             {

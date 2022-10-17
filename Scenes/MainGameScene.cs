@@ -16,8 +16,15 @@ namespace consoleCombat.Scenes
 
         public override void Run()
         {
-            Clear();
-            string prompt = "Main Menu:";
+            ResetColor();
+            WriteLine("Current Gold:");
+            Write(MyGame.player.gold);
+            string prompt = @$"
+Gold: {MyGame.player.gold}
+Experience: {MyGame.player.experience}
+            
+Main Menu:
+            ";
             string[] options = { "Fight", "Shop", "Stats", "Inventory", "Log Out" };
             Menu createCharacterMenu = new Menu(prompt, options);
             int selectedIndex = createCharacterMenu.Run();

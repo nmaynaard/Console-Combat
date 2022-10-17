@@ -36,7 +36,7 @@ namespace consoleCombat
 
         public void Test()
         {
-            fightScene.Run();
+            mainGameScene.Run();
         }
     }
 }
