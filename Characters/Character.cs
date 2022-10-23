@@ -20,7 +20,7 @@ namespace consoleCombat.Characters
         public bool _isAlive { get => _health > 0; }
         public int experience { get; private set; }
         private int experienceToNextLevel;
-        public int level { get; private set; }
+        public int _level { get; set; }
         public Random randGenerator;
 
         /* 
@@ -52,6 +52,8 @@ namespace consoleCombat.Characters
         public void ResetHealth()
         {
             _health = _maxHealth;
+            randGenerator = new Random();
+            _level = randGenerator.Next(1, 50);
         }
 
         public void PickUpItem(Item item)
@@ -68,7 +70,7 @@ namespace consoleCombat.Characters
         {
             randGenerator = new Random();
             ForegroundColor = _color;
-            Write($"{_characterName} Heals and ");
+            Write($"Lv. {_level} {_characterName} Heals and ");
             int randPercent = randGenerator.Next(1, 101);
             if (randPercent <= 40)
             {
@@ -94,7 +96,7 @@ namespace consoleCombat.Characters
         {
             ForegroundColor = _color;
             ResetColor();
-            WriteLine($" {_characterName}'s Health");
+            WriteLine($"Lv. {_level} {_characterName}'s Health");
             Write("[");
             BackgroundColor = ConsoleColor.Green;
             for (int i = 0; i < _health; i++)

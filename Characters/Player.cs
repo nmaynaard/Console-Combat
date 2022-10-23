@@ -34,7 +34,7 @@ namespace consoleCombat.Characters
         {
             randGenerator = new Random();
             ForegroundColor = _color;
-            Write($"{_characterName} Punches {otherCharacter._characterName} and");
+            Write($"Lv. {_level} {_characterName} Punches {otherCharacter._characterName} and");
             int randPercent = randGenerator.Next(1, 101);
             if (randPercent <= 90)
             {
@@ -52,7 +52,7 @@ namespace consoleCombat.Characters
         {
             randGenerator = new Random();
             ForegroundColor = _color;
-            Write($"{_characterName} kicks {otherCharacter._characterName} and");
+            Write($"Lv. {_level} {_characterName} kicks {otherCharacter._characterName} and");
             int randPercent = randGenerator.Next(1, 101);
             if (randPercent <= 90)
             {

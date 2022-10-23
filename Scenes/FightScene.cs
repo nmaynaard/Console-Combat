@@ -26,20 +26,20 @@ namespace consoleCombat.Scenes
             if (MyGame.player._isDead)
             {
                 MyGame.CurrentEnemy.ResetHealth();
-                WriteLine($"{MyGame.player._characterName} died");
+                WriteLine($"Lv. {MyGame.player._level} {MyGame.player._characterName} feints");
                 ReadKey(true);
             }
             else
             {
                 MyGame.CurrentEnemy.ResetHealth();
                 ForegroundColor = MyGame.CurrentEnemy._color;
-                WriteLine($"{MyGame.CurrentEnemy._characterName} died");
+                WriteLine($"Lv. {MyGame.CurrentEnemy._level} {MyGame.CurrentEnemy._characterName} feints");
                 ResetColor();
                 MyGame.player.ExperienceGain();
                 ReadKey(true);
             }
 
-            MyGame.mainGameScene.Run();
+            MyGame.townScene.Run();
         }
 
         public void Battle()

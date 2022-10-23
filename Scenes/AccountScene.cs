@@ -16,7 +16,6 @@ namespace consoleCombat.Scenes
         private string password;
         private string username1;
         private string password1;
-        private string path;
         StreamWriter writer;
         StreamReader reader;
 
@@ -50,7 +49,7 @@ namespace consoleCombat.Scenes
             WriteLine("Account Created");
             ResetColor();
             ReadKey(true);
-            MyGame.mainGameScene.Run();
+            MyGame.townScene.Run();
         }
 
         public void Login()
@@ -73,7 +72,7 @@ namespace consoleCombat.Scenes
                     WriteLine("Login Successful");
                     ReadKey(true);
                     ResetColor();
-                    MyGame.mainGameScene.Run();
+                    MyGame.townScene.Run();
                 }
                 else
                 {

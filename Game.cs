@@ -16,18 +16,20 @@ namespace consoleCombat
         public Player player;
         public List<Character> enemies;
         public Character CurrentEnemy;
+        public TownScene townScene;
         public Game()
         {
             titleScene = new TitleScene(this);
             accountScene = new AccountScene(this);
             mainGameScene = new MainGameScene(this);
             fightScene = new FightScene(this);
+            townScene = new TownScene(this);
             Bulbasaur bulbasaur = new Bulbasaur("Bulbasaur", 10, ConsoleColor.DarkYellow);
             Charmander charmander = new Charmander("Charmander", 10, ConsoleColor.Red);
             Squirtle squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
             Item pokeball = new Item("Pokeball", 10);
             enemies = new List<Character>() { bulbasaur, charmander, squirtle };
-            player = new Player(accountScene.username, 10, ConsoleColor.Magenta);
+            player = new Player(accountScene.username, 100, ConsoleColor.Magenta);
         }
         public void Start()
         {
@@ -36,7 +38,19 @@ namespace consoleCombat
 
         public void Test()
         {
-            mainGameScene.Run();
+            townScene.Run();
+            Clear();
         }
     }
 }
+
+// Create levels the player can explore DONE
+// Add random enemies to the map the player can fight DONE
+// Random around the level DONE
+// walk up to them and fight DONE
+// Spawn into the world when creating a player level 1 etc. DONE
+// add interiors to the map and spawn inside the home
+// kill monsters to level up 
+// add a shop 
+// collect monsters
+// Print a pokemon to random place on level; use townplayer.cs for reference but use random integer instead of specify 

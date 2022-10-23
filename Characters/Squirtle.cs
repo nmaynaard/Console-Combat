@@ -13,13 +13,22 @@ namespace consoleCombat.Characters
         public Squirtle(string characterName, int health, ConsoleColor color)
              : base(characterName, health, color)
         {
-
+            randGenerator = new Random();
+            _level = randGenerator.Next(1, 50);
+            if (_level >= 16)
+            {
+                _characterName = "Wartortle";
+            }
+            else if (_level >= 32)
+            {
+                _characterName = "Blastoise";
+            }
         }
         public override void Attack(Character otherCharacter)
         {
             randGenerator = new Random();
             ForegroundColor = _color;
-            Write($"{_characterName} attacks {otherCharacter._characterName} and");
+            Write($"Lv. {_level} {_characterName} attacks {otherCharacter._characterName} and");
             int randPercent = randGenerator.Next(1, 101);
             if (randPercent <= 90)
             {
