@@ -32,7 +32,7 @@ namespace consoleCombat.Scenes
             string[,] grid = LevelParser.ParseFileToArray("ttown.txt");
 
             town = new World(grid);
-            player = new TownPlayer(1, 1);
+            player = new TownPlayer(52, 10);
             monOne = new SpawnMonster();
             monTwo = new SpawnMonster();
             monThree = new SpawnMonster();
@@ -97,6 +97,43 @@ namespace consoleCombat.Scenes
                     break;
             }
         }
+
+        private void DisplayStats()
+        {
+            Clear();
+            WriteLine($"Experience: {MyGame.player.experience}");
+            WriteLine($"Gold: {MyGame.player.gold}");
+            WriteLine($"Lvl: {MyGame.player._level}");
+            ReadKey(true);
+            Run();
+        }
+        private void Help()
+        {
+            Clear();
+            WriteLine(@$"
+Welcome to Console Combat, you begin in the world as a Level 1 Trainer 
+and must battle creatures that randomly spawn within town by heading
+to one of the red question marks located within the town. Battling and 
+beating the creature in battle will allow you to gain experience, gold
+and develop your character to become stronger and allow you battle 
+stronger creatures. You can move around the town by using the Arrow keys 
+and must travel to either one of the red question marks located within the 
+map to battle a creature or to one of the letters located at each of the 
+points of interest.
+
+HOME is where your trainer lives, you can view your stats here and eventually
+upgrade your trainer. The HELP house is where you currently are here you 
+ill find out about anything within town and what it does. 
+HOSPITAL is where you can heal your trainer and subsequent characters. 
+INVENTORY is your storage, here you can see which items you currently own and 
+can see a list of creatures you have captured. Lastly, STORE is where you can 
+buy and sell items to help you gain money, experience, abilities and much more.
+
+
+");
+            ReadKey(true);
+            Run();
+        }
         private void GameLoop()
         {
             while (true)
@@ -109,14 +146,14 @@ namespace consoleCombat.Scenes
                 {
                     Clear();
                     ForegroundColor = ConsoleColor.Yellow;
-                    WriteLine("A random monster appears...");
+                    WriteLine("A random pokemon appears...");
                     System.Threading.Thread.Sleep(1000);
                 }
                 else if ((player.x == monThree.x && player.y == monThree.y))
                 {
                     Clear();
                     ForegroundColor = ConsoleColor.Yellow;
-                    WriteLine("A random monster appears...");
+                    WriteLine("A random pokemon appears...");
                     System.Threading.Thread.Sleep(1000);
                     MyGame.fightScene.Run();
                 }
@@ -124,7 +161,7 @@ namespace consoleCombat.Scenes
                 {
                     Clear();
                     ForegroundColor = ConsoleColor.Yellow;
-                    WriteLine("A random monster appears...");
+                    WriteLine("A random pokemon appears...");
                     System.Threading.Thread.Sleep(1000);
                     MyGame.fightScene.Run();
                 }
@@ -132,7 +169,7 @@ namespace consoleCombat.Scenes
                 {
                     Clear();
                     ForegroundColor = ConsoleColor.Yellow;
-                    WriteLine("A random monster appears...");
+                    WriteLine("A random pokemon appears...");
                     System.Threading.Thread.Sleep(1000);
                     MyGame.fightScene.Run();
                 }
@@ -140,7 +177,7 @@ namespace consoleCombat.Scenes
                 {
                     Clear();
                     ForegroundColor = ConsoleColor.Yellow;
-                    WriteLine("A random monster appears...");
+                    WriteLine("A random pokemon appears...");
                     System.Threading.Thread.Sleep(1000);
                     MyGame.fightScene.Run();
                 }
@@ -157,10 +194,22 @@ namespace consoleCombat.Scenes
                 if (elementAtPlayerPos == "H")
                 {
                     Clear();
-                    ForegroundColor = ConsoleColor.Yellow;
-                    WriteLine("Returning to main Menu...");
-                    System.Threading.Thread.Sleep(1000);
-                    MyGame.accountScene.Register();
+                    DisplayStats();
+                    break;
+                }
+                if (elementAtPlayerPos == "Q")
+                {
+                    Clear();
+                    Help();
+                    break;
+                }
+                if (elementAtPlayerPos == "S")
+                {
+                    Clear();
+                    MyGame.player.PlayerHeal();
+                    WriteLine("You've healed yourself back to full health");
+                    System.Threading.Thread.Sleep(2000);
+                    Run();
                     break;
                 }
                 System.Threading.Thread.Sleep(20);

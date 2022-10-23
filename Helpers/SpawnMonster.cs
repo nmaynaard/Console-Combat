@@ -19,7 +19,7 @@ namespace consoleCombat.Helpers
             rand = new Random();
             x = rand.Next(1, 70);
             y = rand.Next(1, 20);
-            PlayerMarker = "X";
+            PlayerMarker = "?";
             PlayerColor = ConsoleColor.Red;
         }
 

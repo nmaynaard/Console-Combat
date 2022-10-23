@@ -18,20 +18,16 @@ namespace consoleCombat.Characters
         public int _defense { get; protected set; }
         public bool _isDead { get => _health <= 0; }
         public bool _isAlive { get => _health > 0; }
-        public int experience { get; private set; }
-        private int experienceToNextLevel;
+        public int experience { get; set; }
         public int _level { get; set; }
+        public int gold { get; set; }
         public Random randGenerator;
-
-        /* 
-            Add level and experience to character class
-            make fight choose a random enemy from the enemy list 
-            make the enemies difficulty change based on its level
-            make the enemies level random
-            make experience gain be based off of the enemies level
-            make the ability to capture an enemy 
-
-        */
+        public void ExperienceGain()
+        {
+            experience += 250;
+            gold += 56;
+            _level += 1;
+        }
 
         public Character(string characterName, int health, ConsoleColor color)
         {
@@ -39,6 +35,7 @@ namespace consoleCombat.Characters
             _health = health;
             _maxHealth = health;
             _color = color;
+            _level = 1;
         }
 
         public void DisplayInfo()
@@ -55,7 +52,10 @@ namespace consoleCombat.Characters
             randGenerator = new Random();
             _level = randGenerator.Next(1, 50);
         }
-
+        public void PlayerHeal()
+        {
+            _health = _maxHealth;
+        }
         public void PickUpItem(Item item)
         {
             _currentItem = item;

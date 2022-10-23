@@ -29,7 +29,7 @@ namespace consoleCombat
             Squirtle squirtle = new Squirtle("Squirtle", 10, ConsoleColor.Cyan);
             Item pokeball = new Item("Pokeball", 10);
             enemies = new List<Character>() { bulbasaur, charmander, squirtle };
-            player = new Player(accountScene.username, 100, ConsoleColor.Magenta);
+            player = new Player(accountScene.username, 10, ConsoleColor.Magenta);
         }
         public void Start()
         {
@@ -50,7 +50,7 @@ namespace consoleCombat
 // walk up to them and fight DONE
 // Spawn into the world when creating a player level 1 etc. DONE
 // add interiors to the map and spawn inside the home
-// kill monsters to level up 
+// kill monsters to level up DONE
 // add a shop 
 // collect monsters
-// Print a pokemon to random place on level; use townplayer.cs for reference but use random integer instead of specify 
+// Print a pokemon to random place on level; use townplayer.cs for reference but use random integer instead of specify DONE

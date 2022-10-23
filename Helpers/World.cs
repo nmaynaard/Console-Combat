@@ -50,7 +50,7 @@ namespace consoleCombat.Helpers
             {
                 return false;
             }
-            return Grid[y, x] == " " || Grid[y, x] == "X" || Grid[y, x] == "H";
+            return Grid[y, x] == " " || Grid[y, x] == "X" || Grid[y, x] == "H" || Grid[y, x] == "Q" || Grid[y, x] == "S";
         }
     }
 

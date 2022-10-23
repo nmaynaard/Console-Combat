@@ -12,23 +12,11 @@ namespace consoleCombat.Characters
     public class Player : Character
     {
         public string username;
-        public int experience { get; private set; }
-        private int experienceToNextLevel;
-        public int level { get; private set; }
-        public int gold { get; private set; }
 
         public Player(string characterName, int health, ConsoleColor color)
              : base(characterName, health, color)
         {
-            level = 0;
-            experience = 0;
-            gold = 0;
-        }
-        public void ExperienceGain()
-        {
-            experience += 500;
-            gold += 100;
-            WriteLine("You Gained 500 Experience and 100 Gold");
+
         }
         private void Punch(Character otherCharacter)
         {
